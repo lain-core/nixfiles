@@ -1,15 +1,28 @@
 { config, pkgs, ... }:
 
 {
+    # Enable nix * instead of nix-* commands
+    nix.settings.experimental-features = "nix-command flakes";
+
+    # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+    system.stateVersion = "23.11";
+
     # Enable flatpak.
     services.flatpak.enable = true;
 
-    # Enable nix * instead of nix-* commands
-    nix.settings.experimental-features = "nix-command flakes";
-    
     # XDG settings for flatpak that should be set if NOT using GNOME.
     # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     # xdg.portal.config.common.default = "gtk";
+
+
+    
+    # Install Firefox.
+    programs.firefox.enable = true;
+
+    # Networking
+    networking.networkmanager.enable = true;
+
+    nixpkgs.config.allowUnfree = true;
 
     # Enable Auto-updates.
     system.autoUpgrade.enable = true;
