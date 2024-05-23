@@ -2,8 +2,7 @@
 
 {
 	imports = [
-		../../default.nix
-		./gnome.nix
+		./configuration.nix
 	];
 
 	services.xserver.videoDrivers = [ "nvidia" ];

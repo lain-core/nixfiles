@@ -1,9 +1,7 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ./user.nix
-    ../../default.nix
-    ./gnome.nix
+    ./configuration.nix
   ];
 
   hardware.enableRedistributableFirmware = true;
