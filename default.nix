@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, home-manager, ... }:
 
 {
     imports = [
@@ -24,6 +24,16 @@
 
     # Install Firefox.
     programs.firefox.enable = true;
+
+    users.users.lain = {
+        isNormalUser = true;
+        home = "/home/lain";
+        extraGroups = [ "wheel" "networkmanager" ];
+    };
+
+    home-manager.users.lain = {
+
+    };
 
     # Enable Auto-updates.
     system.autoUpgrade.enable = true;

@@ -14,12 +14,6 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  users.users.lain = {
-    isNormalUser = true;
-    home = "/home/lain";
-    extraGroups = [ "wheel" "networkmanager" ];
-  };
-
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "lain";
