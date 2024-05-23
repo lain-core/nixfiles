@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
     imports = [
@@ -7,20 +7,8 @@
     # Enable nix * instead of nix-* commands
     nix.settings.experimental-features = "nix-command flakes";
 
-    # Let Home Manager install and manage itself.
-    programs.home-manager.enable = true;
-
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     system.stateVersion = "23.11";
-
-    # This value determines the Home Manager release that your configuration is
-    # compatible with. This helps avoid breakage when a new Home Manager release
-    # introduces backwards incompatible changes.
-    #
-    # You should not change this value, even if you update Home Manager. If you do
-    # want to update the value, then make sure to first check the Home Manager
-    # release notes.
-    home.stateVersion = "23.11"; # Please read the comment before changing.
 
     nixpkgs.config.allowUnfree = true;
 
@@ -56,13 +44,18 @@
         SDL2
         
         # Development
+        git
+        vim
         neovim
 
-        # Misc
-        bitwarden
-        ntfs3g
-        vlc
+        # Utils
         calc
+        vlc
+        ntfs3g
+        wget
+        curl
+        
+        # Misc
         sl
     ];
 

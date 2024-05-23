@@ -24,6 +24,13 @@
         modules = [
           ./default.nix
           ./devices/desktop/desktop.nix
+
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+
+            home-manager.users.lain = import ./home/lain/home.nix;
+          }
         ];
       };
     };
