@@ -7,6 +7,10 @@
     # Enable nix * instead of nix-* commands
     nix.settings.experimental-features = "nix-command flakes";
     
+    # XDG settings for flatpak that should be set if NOT using GNOME.
+    # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    # xdg.portal.config.common.default = "gtk";
+
     # Enable Auto-updates.
     system.autoUpgrade.enable = true;
     system.autoUpgrade.allowReboot = true;
