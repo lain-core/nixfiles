@@ -1,5 +1,9 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 {
+  # imports = [
+  #   ../home.nix
+  # ];
+
   users.users.lain = {
     isNormalUser = true;
     home = "/home/lain";

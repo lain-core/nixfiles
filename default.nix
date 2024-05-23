@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
     # Enable nix * instead of nix-* commands
@@ -7,6 +7,12 @@
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     system.stateVersion = "23.11";
 
+
+    nixpkgs.config.allowUnfree = true;
+
+    # Networking
+    networking.networkmanager.enable = true;
+
     # Enable flatpak.
     services.flatpak.enable = true;
 
@@ -14,15 +20,8 @@
     # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     # xdg.portal.config.common.default = "gtk";
 
-
-    
     # Install Firefox.
     programs.firefox.enable = true;
-
-    # Networking
-    networking.networkmanager.enable = true;
-
-    nixpkgs.config.allowUnfree = true;
 
     # Enable Auto-updates.
     system.autoUpgrade.enable = true;

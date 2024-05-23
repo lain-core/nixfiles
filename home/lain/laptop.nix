@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 {
   imports = [
+    ./user.nix
     ../../default.nix
     ./gnome.nix
   ];
