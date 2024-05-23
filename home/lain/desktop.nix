@@ -1,6 +1,11 @@
 { config, pkgs, ... }:
 
 {
+	imports = [
+		../../default.nix
+		./gnome.nix
+	];
+
 	services.xserver.videoDrivers = [ "nvidia" ];
 
 	networking.interfaces.eth0.ipv4.addresses = [ {
