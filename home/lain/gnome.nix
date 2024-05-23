@@ -7,7 +7,7 @@
     services.xserver.displayManager.gdm.enable = true;
     services.xserver.desktopManager.gnome.enable = true;
 
-	system.systemPackages = [
+	environment.systemPackages = [
 		pkgs.gnomeExtensions.dash-to-dock
 		pkgs.gnomeExtensions.arcmenu
 		pkgs.gnomeExtensions.appindicator
