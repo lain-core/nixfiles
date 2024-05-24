@@ -1,9 +1,10 @@
 { config, pkgs, ... }:
 
 {
-	imports = [
-		./configuration.nix
-	];
+  imports = [
+    ./configuration.nix
+  ];
+	networking.hostName = "suletta"; # Define your hostname.
 
 	services.xserver.videoDrivers = [ "nvidia" ];
 
