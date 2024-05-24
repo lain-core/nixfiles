@@ -56,6 +56,8 @@
 
         # Utils
         home-manager
+        nil
+        nixpkgs-fmt
         calc
         vlc
         ntfs3g

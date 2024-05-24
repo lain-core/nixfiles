@@ -6,7 +6,6 @@
 		gnomeExtensions.arcmenu
 		gnomeExtensions.appindicator
 		gnomeExtensions.places-status-indicator
-    gnome.gnome-tweaks
   ];
 
   dconf.settings = {
@@ -51,7 +50,7 @@
 
     "org/gnome/desktop/wm/preferences" = {
       "button-layout" = ":minimize,maximize,close";
-      
+
     };
 
     "org/gtk/settings/file-chooser" = {
