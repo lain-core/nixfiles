@@ -4,9 +4,21 @@
   imports = [
     ./configuration.nix
   ];
-	networking.hostName = "suletta"; # Define your hostname.
+
+	# For whatever reason this breaks a bunch of shit right now.
+	#	services.xserver.videoDrivers = [ "nvidia" ];
+
+
+	hardware.nvidia = {
+			modesetting.enable = true;
+			open = false;
+			nvidiaSettings = true;
+			package = config.boot.kernelPackages.nvidiaPackages.stable;
+	};
 
 	services.xserver.videoDrivers = [ "nvidia" ];
+
+	networking.hostName = "suletta"; # Define your hostname.
 
 	networking.interfaces.eth0.ipv4.addresses = [ {
 		address = "192.168.1.111";
