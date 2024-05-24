@@ -49,6 +49,11 @@
       "two-finger-scrolling-enabled" = true;
     };
 
+    "org/gnome/desktop/wm/preferences" = {
+      "button-layout" = ":minimize,maximize,close";
+      
+    };
+
     "org/gtk/settings/file-chooser" = {
       "sort-directories-first" = true;
     };
