@@ -66,6 +66,7 @@
         
         # Misc
         sl
+	google-chrome
     ];
 
     # Configure for steam input.
