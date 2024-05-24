@@ -72,5 +72,9 @@
     hardware.steam-hardware.enable=true;
 
     # Enable 32-bit OpenGL for Wine &c.
-    hardware.opengl.driSupport32Bit=true;
+    hardware.opengl = {
+	enable = true;
+	driSupport = true;
+	driSupport32Bit = true;
+    };
 }

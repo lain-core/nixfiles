@@ -5,14 +5,17 @@
     ./configuration.nix
   ];
 
-	# For whatever reason this breaks a bunch of shit right now.
-	#	services.xserver.videoDrivers = [ "nvidia" ];
+  # Enable the X11 windowing system.
+  services.xserver.enable = true;
 
+	# Nvidia doesn't play nice with wayland at all.
+  services.xserver.displayManager.gdm.wayland = false;
 
 	hardware.nvidia = {
-			modesetting.enable = true;
 			open = false;
+			powerManagement.enable = true;
 			nvidiaSettings = true;
+			nvidiaPersistenced = true;
 			package = config.boot.kernelPackages.nvidiaPackages.stable;
 	};
 
