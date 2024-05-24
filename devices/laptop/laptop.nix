@@ -1,8 +1,9 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./configuration.nix
   ];
+  networking.hostName = "miorine"; # Define your hostname.
 
   hardware.enableRedistributableFirmware = true;
 

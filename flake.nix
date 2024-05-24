@@ -8,7 +8,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+  outputs = { nixpkgs, home-manager, ... }: {
     
     nixosConfigurations = {
       miorine = nixpkgs.lib.nixosSystem {

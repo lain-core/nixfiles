@@ -1,4 +1,4 @@
-{ inputs, pkgs, home-manager, ... }:
+{ pkgs, ... }:
 
 {
     imports = [
@@ -31,10 +31,6 @@
         extraGroups = [ "wheel" "networkmanager" ];
     };
 
-    home-manager.users.lain = {
-
-    };
-
     # Enable Auto-updates.
     system.autoUpgrade.enable = true;
     system.autoUpgrade.allowReboot = true;
@@ -59,6 +55,7 @@
         neovim
 
         # Utils
+        home-manager
         calc
         vlc
         ntfs3g
