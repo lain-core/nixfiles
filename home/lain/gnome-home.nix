@@ -3,19 +3,14 @@
 {
   home.packages = with pkgs; [
     gnomeExtensions.dash-to-dock
-		gnomeExtensions.arcmenu
-		gnomeExtensions.appindicator
-		gnomeExtensions.places-status-indicator
+    gnomeExtensions.arcmenu
+    gnomeExtensions.appindicator
+    gnomeExtensions.places-status-indicator
   ];
 
   dconf.settings = {
-    "org/virt-manager/virt-manager/connections" = {
-      autoconnect = ["qemu:///system"];
-      uris = ["qemu:///system"];
-    };
-
     "org/gnome/shell" = {
-      "disabled-extensions" = [];
+      "disabled-extensions" = [ ];
       "enabled-extensions" = [
         "appindicatorsupport@rgcjonas.gmail.com"
         "arcmenu@arcmenu.com"
@@ -48,7 +43,7 @@
     };
 
     "org/gnome/desktop/peripherals/touchpad" = {
-      "click-method" = "areas"; 
+      "click-method" = "areas";
       "natural-scroll" = false;
       "two-finger-scrolling-enabled" = true;
     };

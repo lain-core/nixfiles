@@ -29,12 +29,12 @@
   home.packages = with pkgs; [
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions; [
-          rust-lang.rust-analyzer
-          ms-vscode.cpptools
-          ms-python.python
-          bbenoist.nix
-          jnoortheen.nix-ide
-          ms-vscode.hexeditor
+        rust-lang.rust-analyzer
+        ms-vscode.cpptools
+        ms-python.python
+        bbenoist.nix
+        jnoortheen.nix-ide
+        ms-vscode.hexeditor
       ];
     })
     bitwarden

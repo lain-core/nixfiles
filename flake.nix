@@ -9,7 +9,7 @@
   };
 
   outputs = { nixpkgs, home-manager, ... }: {
-    
+
     nixosConfigurations = {
       miorine = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -17,7 +17,8 @@
           ./default.nix
           ./devices/laptop/laptop.nix
 
-          home-manager.nixosModules.home-manager {
+          home-manager.nixosModules.home-manager
+          {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
@@ -32,7 +33,8 @@
           ./default.nix
           ./devices/desktop/desktop.nix
 
-          home-manager.nixosModules.home-manager {
+          home-manager.nixosModules.home-manager
+          {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 

@@ -1,83 +1,84 @@
 { pkgs, ... }:
 
 {
-    imports = [
-        ./home/lain
-    ];
-    # Enable nix * instead of nix-* commands
-    nix.settings.experimental-features = "nix-command flakes";
+  imports = [
+    ./home/lain
+  ];
+  # Enable nix * instead of nix-* commands
+  nix.settings.experimental-features = "nix-command flakes";
 
-    # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-    system.stateVersion = "23.11";
+  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+  system.stateVersion = "23.11";
 
-    nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
 
-    # Networking
-    networking.networkmanager.enable = true;
+  # Networking
+  networking.networkmanager.enable = true;
 
-    # Enable flatpak.
-    services.flatpak.enable = true;
+  # Enable flatpak.
+  services.flatpak.enable = true;
 
-    # XDG settings for flatpak that should be set if NOT using GNOME.
-    # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    # xdg.portal.config.common.default = "gtk";
+  # XDG settings for flatpak that should be set if NOT using GNOME.
+  # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  # xdg.portal.config.common.default = "gtk";
 
-    # Install Firefox.
-    programs.firefox.enable = true;
+  # Install Firefox.
+  programs.firefox.enable = true;
 
-    users.users.lain = {
-        isNormalUser = true;
-        home = "/home/lain";
-        extraGroups = [ "wheel" "networkmanager" ];
-    };
+  users.users.lain = {
+    isNormalUser = true;
+    home = "/home/lain";
+    extraGroups = [ "wheel" "networkmanager" ];
+  };
 
-    # Enable Auto-updates.
-    system.autoUpgrade.enable = true;
-    system.autoUpgrade.allowReboot = true;
+  # Enable Auto-updates.
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.allowReboot = true;
 
-    # Install relevant packages.
-    environment.systemPackages = with pkgs; [
-        # Toolchain
-        gcc
-        cmake
-        gnumake
-        cc65
-        nodenv
-        pyenv
-        rustup
-        gcc-arm-embedded
-        ffmpeg
-        SDL2
-        libxcrypt
-        openssl
-        
-        # Development
-        git
-        vim
-        neovim
+  # Install relevant packages.
+  environment.systemPackages = with pkgs; [
+    # Toolchain
+    gcc
+    cmake
+    gnumake
+    cc65
+    nodenv
+    pyenv
+    rustup
+    gcc-arm-embedded
+    ffmpeg
+    SDL2
+    libxcrypt
+    openssl
 
-        # Utils
-        home-manager
-        nil
-        nixpkgs-fmt
-        calc
-        vlc
-        ntfs3g
-        wget
-        curl
-        
-        # Misc
-        sl
-	google-chrome
-    ];
+    # Development
+    git
+    vim
+    neovim
+    rpi-imager
 
-    # Configure for steam input.
-    hardware.steam-hardware.enable=true;
+    # Utils
+    home-manager
+    nil
+    nixpkgs-fmt
+    calc
+    vlc
+    ntfs3g
+    wget
+    curl
 
-    # Enable 32-bit OpenGL for Wine &c.
-    hardware.opengl = {
-	enable = true;
-	driSupport = true;
-	driSupport32Bit = true;
-    };
+    # Misc
+    sl
+    google-chrome
+  ];
+
+  # Configure for steam input.
+  hardware.steam-hardware.enable = true;
+
+  # Enable 32-bit OpenGL for Wine &c.
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
 }
