@@ -9,6 +9,11 @@
   ];
 
   dconf.settings = {
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = ["qemu:///system"];
+      uris = ["qemu:///system"];
+    };
+
     "org/gnome/shell" = {
       "disabled-extensions" = [];
       "enabled-extensions" = [

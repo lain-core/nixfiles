@@ -48,6 +48,8 @@
         gcc-arm-embedded
         ffmpeg
         SDL2
+        libxcrypt
+        openssl
         
         # Development
         git
