@@ -73,6 +73,7 @@
     # Misc
     sl
     google-chrome
+    neofetch
   ];
 
   # Configure Caps-as-ctrl.
@@ -89,4 +90,6 @@
     driSupport = true;
     driSupport32Bit = true;
   };
+
+    programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
 }

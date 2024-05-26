@@ -24,25 +24,6 @@
   home.username = "lain";
   home.homeDirectory = "/home/lain";
 
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-    shellAliases = {
-      ll = "ls -l";
-    };
-
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ 
-        "git"
-        "sudo" 
-        "rust"
-      ];
-    };
-  };
-
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -56,6 +37,8 @@
         ms-vscode.hexeditor
       ];
     })
+    zsh-powerlevel10k
+    meslo-lgs-nf
     bitwarden
 
     # Fun
@@ -83,6 +66,40 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+    shellAliases = {
+      ll = "ls -l";
+    };
+
+    plugins = [
+        {
+          name = "powerlevel10k";
+          src = pkgs.zsh-powerlevel10k;
+          file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+        }
+
+        {
+          name = "powerlevel10k-config";
+          src = ./p10k-config;
+          file = "p10k.zsh";
+        }
+    ];
+
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ 
+        "git"
+        "sudo" 
+        "rust"
+      ];
+    };
+  };
+
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
