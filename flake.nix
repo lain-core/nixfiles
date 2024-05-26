@@ -6,9 +6,10 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = { nixpkgs, home-manager, ... }: {
+  outputs = { nixpkgs, home-manager, nixos-hardware, ... }: {
 
     nixosConfigurations = {
       miorine = nixpkgs.lib.nixosSystem {
@@ -32,6 +33,8 @@
         modules = [
           ./default.nix
           ./devices/desktop/desktop.nix
+
+          nixos-hardware.nixosModules.framework.amd-7040
 
           home-manager.nixosModules.home-manager
           {
