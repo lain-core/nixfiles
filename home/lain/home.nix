@@ -24,6 +24,20 @@
   home.username = "lain";
   home.homeDirectory = "/home/lain";
 
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    syntaxHighlighting.enable = true;
+    shellAliases = {
+      ll = "ls -l";
+    };
+
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" "sudo" ];
+    };
+  };
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [

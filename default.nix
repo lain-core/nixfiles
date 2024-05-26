@@ -24,11 +24,14 @@
 
   # Install Firefox.
   programs.firefox.enable = true;
+  programs.zsh.enable = true;
 
   users.users.lain = {
+    shell = pkgs.zsh;
     isNormalUser = true;
     home = "/home/lain";
     extraGroups = [ "wheel" "networkmanager" ];
+    initialPassword = "password"; # Change on first boot
   };
 
   # Enable Auto-updates.
@@ -71,6 +74,11 @@
     sl
     google-chrome
   ];
+
+  # Configure Caps-as-ctrl.
+  services.xserver.xkb = {
+    options = "ctrl:swapcaps";
+  };
 
   # Configure for steam input.
   hardware.steam-hardware.enable = true;
