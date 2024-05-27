@@ -69,6 +69,7 @@
     ntfs3g
     wget
     curl
+    p7zip
 
     # Misc
     sl
@@ -91,5 +92,5 @@
     driSupport32Bit = true;
   };
 
-    programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+  programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
 }

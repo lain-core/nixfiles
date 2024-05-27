@@ -18,6 +18,8 @@
           ./default.nix
           ./devices/laptop/laptop.nix
 
+          nixos-hardware.nixosModules.framework.amd-7040
+
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -33,8 +35,6 @@
         modules = [
           ./default.nix
           ./devices/desktop/desktop.nix
-
-          nixos-hardware.nixosModules.framework.amd-7040
 
           home-manager.nixosModules.home-manager
           {
