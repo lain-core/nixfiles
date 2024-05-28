@@ -19,6 +19,10 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
+  environment.systemPackages = [
+    pkgs.gwe
+  ];
+
   services.xserver.videoDrivers = [ "nvidia" ];
 
   networking.hostName = "suletta"; # Define your hostname.
