@@ -20,7 +20,7 @@
       "favorite-apps" = [
         "firefox.desktop"
         "org.gnome.Nautilus.desktop"
-        "org.gnome.Console.desktop"
+        "kitty.desktop"
         "code.desktop"
         "steam.desktop"
         "discord.desktop"
@@ -65,7 +65,7 @@
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       "binding" = "<Control><Alt>t";
-      "command" = "kgx";
+      "command" = "kitty";
       "name" = "Terminal";
     };
   };
