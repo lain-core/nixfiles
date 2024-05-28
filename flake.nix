@@ -18,7 +18,7 @@
           ./default.nix
           ./devices/laptop/laptop.nix
 
-          nixos-hardware.nixosModules.framework.amd-7040
+          nixos-hardware.nixosModules.framework-13-7040-amd
 
           home-manager.nixosModules.home-manager
           {
