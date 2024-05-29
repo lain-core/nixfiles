@@ -1,9 +1,5 @@
 { pkgs, ... }:
 {
-  imports = [
-    ./configuration.nix
-  ];
-
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -15,4 +11,13 @@
 
   # Kernel bug hangs laptop after shutdown currently
   boot.kernelPackages = pkgs.linuxPackages_zen;
+
+  imports = [
+    ./configuration.nix
+    ../../nixos/
+    ../../nixos/de/gnome.nix
+    ../../nixos/programs/firefox.nix
+    ../../nixos/programs/steam.nix
+    ../../nixos/programs/zsh/zsh.nix
+  ];
 }

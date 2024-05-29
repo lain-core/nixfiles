@@ -1,10 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ./configuration.nix
-  ];
-
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -39,4 +35,13 @@
 
   nix.gc.automatic = true;
   nix.gc.dates = "00:00";
+
+  imports = [
+    ./configuration.nix
+    ../../nixos/
+    ../../nixos/de/gnome.nix
+    ../../nixos/programs/firefox.nix
+    ../../nixos/programs/steam.nix
+    ../../nixos/programs/zsh/zsh.nix
+  ];
 }

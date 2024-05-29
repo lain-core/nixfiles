@@ -1,9 +1,6 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ./home/lain
-  ];
   # Enable nix * instead of nix-* commands
   nix.settings.experimental-features = "nix-command flakes";
 
@@ -15,19 +12,8 @@
   # Networking
   networking.networkmanager.enable = true;
 
-  # Enable flatpak.
-  # services.flatpak.enable = true;
-
-  # XDG settings for flatpak that should be set if NOT using GNOME.
-  # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  # xdg.portal.config.common.default = "gtk";
-
-  # Install Firefox.
-  programs.firefox.enable = true;
-  programs.zsh.enable = true;
-
+  # TODO: modify this
   users.users.lain = {
-    shell = pkgs.zsh;
     isNormalUser = true;
     home = "/home/lain";
     extraGroups = [ "wheel" "networkmanager" ];
@@ -81,6 +67,4 @@
   services.xserver.xkb = {
     options = "ctrl:swapcaps";
   };
-
-  programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
 }

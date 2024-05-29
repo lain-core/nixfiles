@@ -31,7 +31,15 @@
     yt-dlp
     deluge
     hexchat
+  ];
 
+  imports = [
+    ./git.nix
+    ../../de/gnome.nix
+    ../../programs/kitty/kitty.nix
+    ../../programs/nvim/nvim.nix
+    ../../programs/zsh/zsh.nix
+    ../../programs/vscode.nix
   ];
 
 }
