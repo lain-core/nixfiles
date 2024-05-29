@@ -1,10 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ./configuration.nix
-  ];
-
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -39,4 +35,21 @@
 
   nix.gc.automatic = true;
   nix.gc.dates = "00:00";
+
+  # TODO: modify this
+  users.users.lain = {
+    isNormalUser = true;
+    home = "/home/lain";
+    extraGroups = [ "wheel" "networkmanager" ];
+    initialPassword = "password"; # Change on first boot
+  };
+
+  imports = [
+    ./configuration.nix
+    ../../nixos/default.nix
+    ../../nixos/de/gnome.nix
+    ../../nixos/programs/firefox.nix
+    ../../nixos/programs/steam.nix
+    ../../nixos/programs/zsh/zsh.nix
+  ];
 }

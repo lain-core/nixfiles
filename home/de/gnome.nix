@@ -20,7 +20,7 @@
       "favorite-apps" = [
         "firefox.desktop"
         "org.gnome.Nautilus.desktop"
-        "kitty.desktop"
+        "kitty.desktop" #TODO: Find a way to insert this dependent on the term emulator in use
         "code.desktop"
         "steam.desktop"
         "discord.desktop"
@@ -57,16 +57,18 @@
       "sort-directories-first" = true;
     };
 
-    "org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = [
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
-      ];
-    };
+    # # Configure CTRL-ALT-T to open the GNOME terminal.
+    # # This will be overridden by target terminal emulator where necessary.
+    # "org/gnome/settings-daemon/plugins/media-keys" = {
+    #   custom-keybindings = [
+    #     "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+    #   ];
+    # };
 
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-      "binding" = "<Control><Alt>t";
-      "command" = "kitty";
-      "name" = "Terminal";
-    };
+    # "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+    #   "binding" = "<Control><Alt>t";
+    #   "command" = "kgx";
+    #   "name" = "Terminal";
+    # };
   };
 }

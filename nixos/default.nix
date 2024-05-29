@@ -1,9 +1,6 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ./home/lain
-  ];
   # Enable nix * instead of nix-* commands
   nix.settings.experimental-features = "nix-command flakes";
 
@@ -14,25 +11,6 @@
 
   # Networking
   networking.networkmanager.enable = true;
-
-  # Enable flatpak.
-  services.flatpak.enable = true;
-
-  # XDG settings for flatpak that should be set if NOT using GNOME.
-  # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  # xdg.portal.config.common.default = "gtk";
-
-  # Install Firefox.
-  programs.firefox.enable = true;
-  programs.zsh.enable = true;
-
-  users.users.lain = {
-    shell = pkgs.zsh;
-    isNormalUser = true;
-    home = "/home/lain";
-    extraGroups = [ "wheel" "networkmanager" ];
-    initialPassword = "password"; # Change on first boot
-  };
 
   # Enable Auto-updates.
   system.autoUpgrade.enable = true;
@@ -81,16 +59,4 @@
   services.xserver.xkb = {
     options = "ctrl:swapcaps";
   };
-
-  # Configure for steam input.
-  hardware.steam-hardware.enable = true;
-
-  # Enable 32-bit OpenGL for Wine &c.
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
-
-  programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
 }
