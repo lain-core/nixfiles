@@ -14,19 +14,19 @@
     TERMINAL = "kitty";
   };
 
-  # dconf.settings =
-  #   {
-  #     "org/gnome/settings-daemon/plugins/media-keys" = {
-  #       custom-keybindings = [
-  #         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
-  #       ];
-  #     };
+  dconf.settings =
+    {
+      "org/gnome/settings-daemon/plugins/media-keys" = {
+        custom-keybindings = [
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+        ];
+      };
 
-  #     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-  #       "binding" = "<Control><Alt>t";
-  #       "command" = "kitty";
-  #       "name" = "Terminal";
-  #     };
-  #   };
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+        "binding" = "<Control><Alt>t";
+        "command" = "kitty";
+        "name" = "Terminal";
+      };
+    };
 
 }

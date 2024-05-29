@@ -30,6 +30,8 @@
           };
         };
       };
+
+      workbench.colorTheme = "Solarized Dark";
     };
   };
 }
