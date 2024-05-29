@@ -24,6 +24,7 @@
     ./configuration.nix
     ../../../nixos/default.nix
     ../../../nixos/de/gnome.nix
+    ../../../nixos/jp/default.nix
     ../../../nixos/programs/firefox.nix
     ../../../nixos/programs/steam.nix
     ../../../nixos/programs/zsh/zsh.nix

@@ -54,6 +54,7 @@
     google-chrome
     neofetch
     tree
+    noto-fonts-cjk-sans
   ];
 
   # Configure Caps-as-ctrl.

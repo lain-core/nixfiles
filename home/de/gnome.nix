@@ -6,6 +6,7 @@
     gnomeExtensions.arcmenu
     gnomeExtensions.appindicator
     gnomeExtensions.places-status-indicator
+    gnomeExtensions.kimpanel
   ];
 
   dconf.settings = {
@@ -16,6 +17,7 @@
         "arcmenu@arcmenu.com"
         "dash-to-dock@micxgx.gmail.com"
         "places-menu@gnome-shell-extensions.gcampax.github.com"
+        "kimpanel@kde.org"
       ];
       "favorite-apps" = [
         "firefox.desktop"
