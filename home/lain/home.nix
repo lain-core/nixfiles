@@ -67,7 +67,7 @@
     # '')
   ];
 
-  programs.kitty.enable = true;
+
 
   programs.zsh = {
     enable = true;
@@ -99,6 +99,15 @@
         "sudo"
         "rust"
       ];
+    };
+  };
+
+  programs.kitty = {
+    enable = true;
+    shellIntegration.enableZshIntegration = true;
+    settings = {
+      "enable_audio_bell" = true;
+      "background_opacity" = "0.7";
     };
   };
 
