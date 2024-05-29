@@ -15,7 +15,7 @@
         system = "x86_64-linux";
         modules = [
           # Hardware determines the system packages
-          ./devices/miorine/
+          ./hardware/miorine/default.nix
 
           nixos-hardware.nixosModules.framework-13-7040-amd
 
@@ -34,7 +34,7 @@
         system = "x86_64-linux";
         modules = [
           # Hardware determines the system packages it wants
-          ./devices/suletta/
+          ./hardware/suletta/default.nix
 
           home-manager.nixosModules.home-manager
           {

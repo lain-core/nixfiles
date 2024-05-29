@@ -14,7 +14,7 @@
 
   imports = [
     ./configuration.nix
-    ../../nixos/
+    ../../nixos/default.nix
     ../../nixos/de/gnome.nix
     ../../nixos/programs/firefox.nix
     ../../nixos/programs/steam.nix

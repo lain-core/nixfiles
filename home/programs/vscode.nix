@@ -10,7 +10,7 @@
       rust-lang.rust-analyzer
       ms-vscode.cpptools
       ms-python.python
-      jnoorthee.nix-ide
+      jnoortheen.nix-ide
       ms-vscode.hexeditor
     ];
 
