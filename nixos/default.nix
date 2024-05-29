@@ -53,6 +53,7 @@
     sl
     google-chrome
     neofetch
+    tree
   ];
 
   # Configure Caps-as-ctrl.

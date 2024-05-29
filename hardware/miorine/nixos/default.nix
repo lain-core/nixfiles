@@ -22,10 +22,10 @@
 
   imports = [
     ./configuration.nix
-    ../../nixos/default.nix
-    ../../nixos/de/gnome.nix
-    ../../nixos/programs/firefox.nix
-    ../../nixos/programs/steam.nix
-    ../../nixos/programs/zsh/zsh.nix
+    ../../../nixos/default.nix
+    ../../../nixos/de/gnome.nix
+    ../../../nixos/programs/firefox.nix
+    ../../../nixos/programs/steam.nix
+    ../../../nixos/programs/zsh/zsh.nix
   ];
 }

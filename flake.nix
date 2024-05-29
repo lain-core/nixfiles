@@ -15,7 +15,7 @@
         system = "x86_64-linux";
         modules = [
           # Hardware determines the system packages
-          ./hardware/miorine/default.nix
+          ./hardware/miorine/nixos/default.nix
 
           nixos-hardware.nixosModules.framework-13-7040-amd
 
@@ -24,8 +24,8 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
-            # User determines the home packages they want
-            home-manager.users.lain = import ./home/users/lain/home.nix;
+            # Hardware can import user packages as desired
+            home-manager.users.lain = import ./hardware/miorine/home/home.nix;
           }
         ];
       };
@@ -34,7 +34,7 @@
         system = "x86_64-linux";
         modules = [
           # Hardware determines the system packages it wants
-          ./hardware/suletta/default.nix
+          ./hardware/suletta/nixos/default.nix
 
           home-manager.nixosModules.home-manager
           {
@@ -42,7 +42,7 @@
             home-manager.useUserPackages = true;
 
             # User determines the home packages they want
-            home-manager.users.lain = import ./home/users/lain/home.nix;
+            home-manager.users.lain = import ./hardware/suletta/home/home.nix;
           }
         ];
       };
