@@ -14,8 +14,8 @@
       miorine = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          ./devices/miorine/
           ./default.nix
-          ./devices/laptop/laptop.nix
 
           nixos-hardware.nixosModules.framework-13-7040-amd
 
@@ -32,8 +32,8 @@
       suletta = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          ./devices/suletta/
           ./default.nix
-          ./devices/desktop/desktop.nix
 
           home-manager.nixosModules.home-manager
           {

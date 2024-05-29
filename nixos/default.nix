@@ -16,7 +16,7 @@
   networking.networkmanager.enable = true;
 
   # Enable flatpak.
-  services.flatpak.enable = true;
+  # services.flatpak.enable = true;
 
   # XDG settings for flatpak that should be set if NOT using GNOME.
   # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
@@ -80,16 +80,6 @@
   # Configure Caps-as-ctrl.
   services.xserver.xkb = {
     options = "ctrl:swapcaps";
-  };
-
-  # Configure for steam input.
-  hardware.steam-hardware.enable = true;
-
-  # Enable 32-bit OpenGL for Wine &c.
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
   };
 
   programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
