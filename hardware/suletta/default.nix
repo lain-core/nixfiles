@@ -36,6 +36,14 @@
   nix.gc.automatic = true;
   nix.gc.dates = "00:00";
 
+  # TODO: modify this
+  users.users.lain = {
+    isNormalUser = true;
+    home = "/home/lain";
+    extraGroups = [ "wheel" "networkmanager" ];
+    initialPassword = "password"; # Change on first boot
+  };
+
   imports = [
     ./configuration.nix
     ../../nixos/default.nix

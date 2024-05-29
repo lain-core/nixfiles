@@ -12,6 +12,14 @@
   # Kernel bug hangs laptop after shutdown currently
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
+  # TODO: modify this
+  users.users.lain = {
+    isNormalUser = true;
+    home = "/home/lain";
+    extraGroups = [ "wheel" "networkmanager" ];
+    initialPassword = "password"; # Change on first boot
+  };
+
   imports = [
     ./configuration.nix
     ../../nixos/default.nix

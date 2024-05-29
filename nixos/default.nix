@@ -12,14 +12,6 @@
   # Networking
   networking.networkmanager.enable = true;
 
-  # TODO: modify this
-  users.users.lain = {
-    isNormalUser = true;
-    home = "/home/lain";
-    extraGroups = [ "wheel" "networkmanager" ];
-    initialPassword = "password"; # Change on first boot
-  };
-
   # Enable Auto-updates.
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = true;
