@@ -1,152 +1,122 @@
-{ inputs, pkgs, lib, ... }:
+{ inputs, lib, pkgs, ... }:
 
-# let
-#   # A little script to fetch packages from github to install.
-#   fromGithub = rev: ref: repo: pkgs.vimUtils.buildVimPlugin {
-#     pname = "${lib.strings.sanitizeDerivationName repo}";
-#     version = ref;
-#     src = builtins.fetchGit {
-#       url = "https://github.com/${repo}.git";
-#       ref = ref;
-#       rev = rev;
-#     };
-#   };
-# in
+# Trying to hack https://github.com/azuwis/lazyvim-nixvim/tree/master
+# back into a regular .nix file
 {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
   ];
 
   home.packages = with pkgs; [
-    xclip
-    wl-clipboard
     lua-language-server
+    stylua
+    ripgrep
+
+    vimPlugins.lazy-nvim
   ];
 
-  # programs.neovim = {
-  #   enable = true;
-  #   defaultEditor = true;
-  #   vimAlias = true;
-
-  #   plugins = [
-  #     pkgs.vimPlugins.nvim-treesitter.withAllGrammars
-  #   ];
-  # };
-
-  # home.file = {
-  #     ".config/nvim" = {
-  #     source = ./nvim;
-  #     recursive = true;
-  #   };
-  # };
-
-  # FIXME: This is busted as shit and fights with the lazyvim stuff.
-  # It might be worth coming back to when I understand the whole nvim setup in more detail.
   programs.nixvim = {
     enable = true;
-    defaultEditor = true;
 
-    # extraConfigLuaPre =
-    #   "require(\"config.lazy\")";
+    extraPackages = with pkgs;
+      [
+        # LazyVim
+        lua-language-server
+        stylua
+        # Telescope
+        ripgrep
 
-    clipboard = {
-      register = "unnamedplus";
-      providers = {
-        wl-copy.enable = true;
-        # TODO: This needs to be enabled for devices using X11
-        # xclip.enable = false;
-      };
-    };
+      ];
 
-    plugins = {
-      lazy.enable = true;
-      treesitter.enable = true;
+    extraPlugins = [ pkgs.vimPlugins.lazy-nvim ];
 
-      # Language servers to enable.
-      lsp = {
-        enable = true;
+    extraConfigLua =
+      let
+        plugins = with pkgs.vimPlugins; [
+          # LazyVim
+          LazyVim
+          bufferline-nvim
+          cmp-buffer
+          cmp-nvim-lsp
+          cmp-path
+          cmp_luasnip
+          conform-nvim
+          dashboard-nvim
+          dressing-nvim
+          flash-nvim
+          friendly-snippets
+          gitsigns-nvim
+          indent-blankline-nvim
+          lualine-nvim
+          neo-tree-nvim
+          neoconf-nvim
+          neodev-nvim
+          noice-nvim
+          nui-nvim
+          nvim-cmp
+          nvim-lint
+          nvim-lspconfig
+          nvim-notify
+          nvim-spectre
+          nvim-treesitter
+          nvim-treesitter-context
+          nvim-treesitter-textobjects
+          nvim-ts-autotag
+          nvim-ts-context-commentstring
+          nvim-web-devicons
+          persistence-nvim
+          plenary-nvim
+          telescope-fzf-native-nvim
+          telescope-nvim
+          todo-comments-nvim
+          tokyonight-nvim
+          trouble-nvim
+          vim-illuminate
+          vim-startuptime
+          which-key-nvim
+          { name = "LuaSnip"; path = luasnip; }
+          { name = "catppuccin"; path = catppuccin-nvim; }
+          { name = "mini.ai"; path = mini-nvim; }
+          { name = "mini.bufremove"; path = mini-nvim; }
+          { name = "mini.comment"; path = mini-nvim; }
+          { name = "mini.indentscope"; path = mini-nvim; }
+          { name = "mini.pairs"; path = mini-nvim; }
+          { name = "mini.surround"; path = mini-nvim; }
+        ];
+        mkEntryFromDrv = drv:
+          if lib.isDerivation drv then
+            { name = "${lib.getName drv}"; path = drv; }
+          else
+            drv;
+        lazyPath = pkgs.linkFarm "lazy-plugins" (builtins.map mkEntryFromDrv plugins);
+      in
+      ''
+        require("lazy").setup({
+          defaults = {
+            lazy = true,
+          },
+          dev = {
+            -- reuse files from pkgs.vimPlugins.*
+            path = "${lazyPath}",
+            patterns = { "." },
+            -- fallback to download
+            fallback = true,
+          },
+          spec = {
+            { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+            -- The following configs are needed for fixing lazyvim on nix
+            -- force enable telescope-fzf-native.nvim
+            { "nvim-telescope/telescope-fzf-native.nvim", enabled = true },
+            -- disable mason.nvim, use config.extraPackages
+            { "williamboman/mason-lspconfig.nvim", enabled = false },
+            { "williamboman/mason.nvim", enabled = false },
+            -- uncomment to import/override with your plugins
+            -- { import = "plugins" },
+            -- put this line at the end of spec to clear ensure_installed
+            { "nvim-treesitter/nvim-treesitter", opts = { ensure_installed = {} } },
+          },
+        })
+      '';
 
-        servers = {
-          bashls.enable = true; # Bash
-          ccls.enable = true; # C/C++
-          cmake.enable = true; # CMake
-          cssls.enable = true; # CSS
-          html.enable = true; # HTML
-          jsonls.enable = true; # JSON
-          lua-ls.enable = true; # Lua
-          nil_ls.enable = true; # Nix
-          pylsp.enable = true; # Python
-          rust-analyzer = {
-            enable = true;
-
-            # Disable the installation of cargo/rustc directly, because some of the rustfmt settings may require nightly versions.
-            installCargo = false;
-            installRustc = false;
-          }; # Rust
-        };
-      };
-
-      # Language server formatting settings. 
-      lsp-format = {
-        enable = true;
-        lspServersToEnable = "all";
-      };
-
-      # TODO: I do not know what these are but I'm stealing them from the default lazy-lock
-      bufferline.enable = true;
-      cmp.enable = true;
-      cmp-buffer.enable = true;
-      cmp-nvim-lsp.enable = true;
-      cmp-path.enable = true;
-      conform-nvim.enable = true;
-      dashboard.enable = true;
-      dressing.enable = true;
-      flash.enable = true;
-      friendly-snippets.enable = true;
-      gitsigns.enable = true;
-      indent-blankline.enable = true;
-      lualine.enable = true;
-      # mason-lspconfig does not apply
-      # mason does not apply
-      mini.enable = true;
-      neo-tree.enable = true;
-      # neoconf does not exist
-      # neodev does not exist
-      noice.enable = true;
-      # nui does not exist
-      # nvim-cmp is just cmp
-      lint.enable = true; #nvim-lint
-      # nvim-lspconfig does not exist
-      notify.enable = true;
-      # nvim-snippets does not exist
-      spectre.enable = true;
-      # Treesitter has been dealt with
-      treesitter-textobjects.enable = true;
-      ts-autotag.enable = true;
-      # nvim-web-devicons doesn't exist
-      persistence.enable = true;
-      # plenary doesn't exist
-      telescope.enable = true;
-      todo-comments.enable = true;
-      # tokyonight theme doesn't exist
-      trouble.enable = true;
-      ts-context-commentstring.enable = true;
-      which-key.enable = true;
-
-    };
   };
-  #   # extraPlugins = [
-  #   #   (pkgs.vimUtils.buildVimPlugin {
-  #   #     name = "format-on-save";
-  #   #     src = pkgs.fetchFromGitHub {
-  #   #       owner = "elentok";
-  #   #       repo = "format-on-save.nvim";
-  #   #       rev = "fed870bb08d9889580f5ca335649da2074bd4b6f";
-  #   #       hash = "sha256-07RWMrBDVIH3iGgo2RcNDhThSrR/Icijcd//MOnBzpA=";
-  #   #     };
-  #   #   })
-  #   # ];
-  # };
 }
-
-
