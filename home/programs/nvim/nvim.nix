@@ -7,6 +7,20 @@
 
   programs.nixvim = {
       enable = true;
+      defaultEditor = true;
+
+      plugins = with pkgs.vimPlugins; {
+        lazy.enable = true;
+        nvim-treesitter.withAllGrammars
+
+      };
+  };
+
+  home.file = {
+      "./config/nvim" = {
+          source = ./nvim;
+          recursive = true;
+        };
     };
 }
 #let
