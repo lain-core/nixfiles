@@ -20,18 +20,26 @@
   home.username = "lain";
   home.homeDirectory = "/home/lain";
 
+  home.sessionVariables = {
+    XDG_CACHE_HOME = "/home/lain/.cache";
+    XDG_CONFIG_HOME = "/home/lain/.config";
+    XDG_DATA_HOME = "/home/lain/.local/share";
+    XDG_STATE_HOME = "/home/lain/.local/state";
+  };
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [
-    bitwarden
+  home.packages = with pkgs;
+    [
+      bitwarden
 
-    # Fun
-    telegram-desktop
-    discord
-    yt-dlp
-    deluge
-    hexchat
-  ];
+      # Fun
+      telegram-desktop
+      discord
+      yt-dlp
+      deluge
+      hexchat
+    ];
 
   imports = [
     ./git.nix
