@@ -20,50 +20,113 @@
 
       ];
 
+    # plugins = {
+
+    #   # Plugins inherited from LazyVim
+    #   lazy.enable = true;
+
+    #   # FIXME: When enabled through nixvim, produces an error about tbl_add_reverse_lookup
+    #   # bufferline.enable = true;
+    #   cmp-buffer.enable = true;
+    #   cmp-path.enable = true;
+    #   cmp_luasnip.enable = true;
+    #   conform-nvim.enable = true;
+    #   dashboard.enable = true;
+    #   dressing.enable = true;
+    #   flash.enable = true;
+    #   friendly-snippets.enable = true;
+    #   gitsigns.enable = true;
+    #   indent-blankline.enable = true;
+
+    #   # FIXME: When enabled through nixvim, produces lua/lualine/themes/gruvbox/init.lua not found error
+    #   # lualine.enable = true;
+    #   neo-tree.enable = true;
+
+    #   # FIXME: When enabled through nixvim, dumps out a log with <Function 1> repeatedly
+    #   # noice.enable = true;
+    #   cmp.enable = true; # as nvim-cmp regularly
+    #   lint.enable = true; # as nvim-lint regularly
+    #   notify.enable = true;
+    #   spectre.enable = true;
+
+    #   # FIXME: treesitter-context produces error:
+    #   #   treesitter-context.context not found in luijit-2.1-1693350652-env/share/...
+    #   # treesitter.enable = true;
+    #   # treesitter-context.enable = true;
+    #   # treesitter-textobjects.enable = true;
+    #   # ts-autotag.enable = true;
+    #   # ts-context-commentstring.enable = true;
+
+    #   persistence.enable = true;
+    #   telescope = {
+    #     enable = true;
+    #     extensions = {
+    #       fzf-native.enable = true;
+    #     };
+    #   };
+    #   todo-comments.enable = true;
+    #   trouble.enable = true;
+    #   which-key.enable = true;
+
+    #   mini = {
+    #     enable = true;
+    #     modules = {
+    #       ai = { };
+    #       bufremove = { };
+    #       comment = { };
+    #       indentscope = { };
+    #       pairs = { };
+    #       surround = { };
+    #     };
+    #   };
+    # };
+
+    extraPlugins = [ pkgs.vimPlugins.lazy-nvim ];
+
     extraConfigLua =
       let
         plugins = with pkgs.vimPlugins; [
           # LazyVim
           LazyVim
           bufferline-nvim
-          # cmp-buffer
+          cmp-buffer
           cmp-nvim-lsp
-          # cmp-path
+          cmp-path
           cmp_luasnip
-          # conform-nvim
-          # dashboard-nvim
-          # dressing-nvim
-          # flash-nvim
-          # friendly-snippets
-          # gitsigns-nvim
-          # indent-blankline-nvim
+          conform-nvim
+          dashboard-nvim
+          dressing-nvim
+          flash-nvim
+          friendly-snippets
+          gitsigns-nvim
+          indent-blankline-nvim
           lualine-nvim
-          # neo-tree-nvim
+          neo-tree-nvim
           neoconf-nvim
           neodev-nvim
           noice-nvim
           nui-nvim
-          # nvim-cmp
-          # nvim-lint
+          nvim-cmp
+          nvim-lint
           nvim-lspconfig
-          # nvim-notify
-          # nvim-spectre
-          # nvim-treesitter
-          # nvim-treesitter-context
-          # nvim-treesitter-textobjects
-          # nvim-ts-autotag
-          # nvim-ts-context-commentstring
+          nvim-notify
+          nvim-spectre
+          nvim-treesitter
+          nvim-treesitter-context
+          nvim-treesitter-textobjects
+          nvim-ts-autotag
+          nvim-ts-context-commentstring
           nvim-web-devicons
-          # persistence-nvim
+          persistence-nvim
           plenary-nvim
-          # telescope-fzf-native-nvim
-          # telescope-nvim
-          # todo-comments-nvim
+          telescope-fzf-native-nvim
+          telescope-nvim
+          todo-comments-nvim
           tokyonight-nvim
-          # trouble-nvim
+          trouble-nvim
           vim-illuminate
           vim-startuptime
-          # which-key-nvim
+          which-key-nvim
           { name = "LuaSnip"; path = luasnip; }
           { name = "catppuccin"; path = catppuccin-nvim; }
           { name = "mini.ai"; path = mini-nvim; }
@@ -107,44 +170,6 @@
           },
         })
       '';
-
-    plugins = {
-
-      # Plugins inherited from LazyVim
-      lazy.enable = true;
-      # bufferline.enable = true;
-      cmp-buffer.enable = true;
-      cmp-path.enable = true;
-      conform-nvim.enable = true;
-      dashboard.enable = true;
-      dressing.enable = true;
-      flash.enable = true;
-      friendly-snippets.enable = true;
-      gitsigns.enable = true;
-      indent-blankline.enable = true;
-      # lualine.enable = true;
-      neo-tree.enable = true;
-      # noice.enable = true;
-      cmp.enable = true; # as nvim-cmp regularly
-      lint.enable = true; # as nvim-lint regularly
-      notify.enable = true;
-      spectre.enable = true;
-      treesitter.enable = true;
-      treesitter-context.enable = true;
-      treesitter-textobjects.enable = true;
-      ts-autotag.enable = true;
-      ts-context-commentstring.enable = true;
-      persistence.enable = true;
-      telescope = {
-        enable = true;
-        extensions = {
-          fzf-native.enable = true;
-        };
-      };
-      todo-comments.enable = true;
-      trouble.enable = true;
-      which-key.enable = true;
-    };
 
   };
 }
