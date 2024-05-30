@@ -3,12 +3,18 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    
+    nixvim.url = "github:nix-community/nixvim";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, home-manager, nixos-hardware, ... }: {
+  # inputs @ passes in the inputs group from above, but only for this file.
+  outputs = inputs @ { nixpkgs, home-manager, nixos-hardware, nixvim, ... }: {
 
     nixosConfigurations = {
       miorine = nixpkgs.lib.nixosSystem {
@@ -23,7 +29,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-
+            home-manager.extraSpecialArgs = { inherit inputs; }; # Allows home-manager access to all of the inputs includes
             # Hardware can import user packages as desired
             home-manager.users.lain = import ./hardware/miorine/home/home.nix;
           }
