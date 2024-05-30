@@ -104,7 +104,7 @@
       flash.enable = true;
       friendly-snippets.enable = true;
       gitsigns.enable = true;
-      indent-blankline = true;
+      indent-blankline.enable = true;
       lualine.enable = true;
       # mason-lspconfig does not apply
       # mason does not apply
@@ -134,19 +134,19 @@
       which-key.enable = true;
 
     };
-
-    #   # extraPlugins = [
-    #   #   (pkgs.vimUtils.buildVimPlugin {
-    #   #     name = "format-on-save";
-    #   #     src = pkgs.fetchFromGitHub {
-    #   #       owner = "elentok";
-    #   #       repo = "format-on-save.nvim";
-    #   #       rev = "fed870bb08d9889580f5ca335649da2074bd4b6f";
-    #   #       hash = "sha256-07RWMrBDVIH3iGgo2RcNDhThSrR/Icijcd//MOnBzpA=";
-    #   #     };
-    #   #   })
-    #   # ];
-    # };
-  }
+  };
+  #   # extraPlugins = [
+  #   #   (pkgs.vimUtils.buildVimPlugin {
+  #   #     name = "format-on-save";
+  #   #     src = pkgs.fetchFromGitHub {
+  #   #       owner = "elentok";
+  #   #       repo = "format-on-save.nvim";
+  #   #       rev = "fed870bb08d9889580f5ca335649da2074bd4b6f";
+  #   #       hash = "sha256-07RWMrBDVIH3iGgo2RcNDhThSrR/Icijcd//MOnBzpA=";
+  #   #     };
+  #   #   })
+  #   # ];
+  # };
+}
 
 
