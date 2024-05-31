@@ -1,11 +1,14 @@
 { config, pkgs, ... }:
 
 {
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Nvidia doesn't play nice with wayland at all.
-  services.xserver.displayManager.gdm.wayland = false;
+  services.xserver = {
+    enable = true;
+    displayManager.gdm.wayland = false;
+    videoDrivers = [ "nvidia" ];
+    deviceSection = ''
+      Option "Coolbits" "28"
+    '';
+  };
 
   hardware.nvidia = {
     open = false;
@@ -19,7 +22,7 @@
     pkgs.gwe
   ];
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+
 
   networking.hostName = "suletta"; # Define your hostname.
 
