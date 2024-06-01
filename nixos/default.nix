@@ -48,6 +48,7 @@
     wget
     curl
     p7zip
+    caligula
 
     # Misc
     sl

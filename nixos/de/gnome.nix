@@ -7,6 +7,7 @@
 
   environment.systemPackages = [
     pkgs.gnome.dconf-editor
+    pkgs.gparted
   ];
 
   environment.gnome.excludePackages = with pkgs.gnome; [
