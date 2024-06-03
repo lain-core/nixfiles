@@ -7,14 +7,6 @@
     inputs.nixvim.homeManagerModules.nixvim
   ];
 
-  home.packages = with pkgs; [
-    lua-language-server
-    stylua
-    ripgrep
-
-    vimPlugins.lazy-nvim
-  ];
-
   programs.nixvim = {
     enable = true;
 
@@ -27,6 +19,67 @@
         ripgrep
 
       ];
+
+    # plugins = {
+
+    #   # Plugins inherited from LazyVim
+    #   lazy.enable = true;
+
+    #   # FIXME: When enabled through nixvim, produces an error about tbl_add_reverse_lookup
+    #   # bufferline.enable = true;
+    #   cmp-buffer.enable = true;
+    #   cmp-path.enable = true;
+    #   cmp_luasnip.enable = true;
+    #   conform-nvim.enable = true;
+    #   dashboard.enable = true;
+    #   dressing.enable = true;
+    #   flash.enable = true;
+    #   friendly-snippets.enable = true;
+    #   gitsigns.enable = true;
+    #   indent-blankline.enable = true;
+
+    #   # FIXME: When enabled through nixvim, produces lua/lualine/themes/gruvbox/init.lua not found error
+    #   # lualine.enable = true;
+    #   neo-tree.enable = true;
+
+    #   # FIXME: When enabled through nixvim, dumps out a log with <Function 1> repeatedly
+    #   # noice.enable = true;
+    #   cmp.enable = true; # as nvim-cmp regularly
+    #   lint.enable = true; # as nvim-lint regularly
+    #   notify.enable = true;
+    #   spectre.enable = true;
+
+    #   # FIXME: treesitter-context produces error:
+    #   #   treesitter-context.context not found in luijit-2.1-1693350652-env/share/...
+    #   # treesitter.enable = true;
+    #   # treesitter-context.enable = true;
+    #   # treesitter-textobjects.enable = true;
+    #   # ts-autotag.enable = true;
+    #   # ts-context-commentstring.enable = true;
+
+    #   persistence.enable = true;
+    #   telescope = {
+    #     enable = true;
+    #     extensions = {
+    #       fzf-native.enable = true;
+    #     };
+    #   };
+    #   todo-comments.enable = true;
+    #   trouble.enable = true;
+    #   which-key.enable = true;
+
+    #   mini = {
+    #     enable = true;
+    #     modules = {
+    #       ai = { };
+    #       bufremove = { };
+    #       comment = { };
+    #       indentscope = { };
+    #       pairs = { };
+    #       surround = { };
+    #     };
+    #   };
+    # };
 
     extraPlugins = [ pkgs.vimPlugins.lazy-nvim ];
 
