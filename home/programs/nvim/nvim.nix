@@ -21,23 +21,28 @@
       ];
 
     plugins = {
-        lsp.enable = true;
-        lsp.servers = {
-          bashls        # Bash
-          clangd        # LLVM for C/C++
-          cmake         # CMake
-          cssls         # CSS
-          eslint        # Linting for JS flavors, if I ever come back to them
-          html          # HTML
-          jsonls        # JSON
-          lua-ls        # Lua
-          nil-ls        # Nix
-          pylsp         # Python
-          rust-analyzer # Rust
-          tsserver      # Typescript
-          yamlls        # YAML
-          };
+      lsp.enable = true;
+      lsp.servers = {
+        bashls.enable = true; # Bash
+        clangd.enable = true; # LLVM for C/C++
+        cmake.enable = true; # CMake
+        cssls.enable = true; # CSS
+        eslint.enable = true; # Linting for JS flavors, if I ever come back to them
+        html.enable = true; # HTML
+        jsonls.enable = true; # JSON
+        lua-ls.enable = true; # Lua
+        nixd.enable = true; # Nix
+        pylsp.enable = true; # Python
+        rust-analyzer = {
+          enable = true;
+          installCargo = false;
+          installRustc = false;
+        }; # Rust
+        tsserver.enable = true; # Typescript
+        yamlls.enable = true; # YAML
       };
+    };
+
     # plugins = {
 
     #   # Plugins inherited from LazyVim
@@ -101,7 +106,7 @@
 
     extraPlugins = [ pkgs.vimPlugins.lazy-nvim ];
 
-    extraConfigLua =
+    extraConfigLuaPre =
       let
         plugins = with pkgs.vimPlugins; [
           # LazyVim
@@ -174,6 +179,7 @@
             fallback = true,
           },
           spec = {
+            { "folke/neoconf.nvim", cmd = "Neoconf", enabled = true },
             { "LazyVim/LazyVim", import = "lazyvim.plugins" },
             -- The following configs are needed for fixing lazyvim on nix
             -- force enable telescope-fzf-native.nvim
