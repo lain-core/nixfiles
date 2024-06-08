@@ -20,6 +20,24 @@
 
       ];
 
+    plugins = {
+        lsp.enable = true;
+        lsp.servers = {
+          bashls        # Bash
+          clangd        # LLVM for C/C++
+          cmake         # CMake
+          cssls         # CSS
+          eslint        # Linting for JS flavors, if I ever come back to them
+          html          # HTML
+          jsonls        # JSON
+          lua-ls        # Lua
+          nil-ls        # Nix
+          pylsp         # Python
+          rust-analyzer # Rust
+          tsserver      # Typescript
+          yamlls        # YAML
+          };
+      };
     # plugins = {
 
     #   # Plugins inherited from LazyVim

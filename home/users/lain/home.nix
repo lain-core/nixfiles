@@ -46,6 +46,7 @@
     ../../de/gnome.nix
     ../../programs/kitty/kitty.nix
     ../../programs/nvim/nvim.nix
+    ../../programs/tmux/tmux.nix
     ../../programs/zsh/zsh.nix
     ../../programs/vscode.nix
   ];
