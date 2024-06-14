@@ -51,6 +51,14 @@
       "two-finger-scrolling-enabled" = true;
     };
 
+    "org/gnome/desktop/search-providers" = {
+      "disabled" = [
+        "org.gnome.Calculator.desktop"
+        "org.gnome.Characters.desktop"
+        "org.gnome.clocks.desktop"
+      ];
+    };
+
     "org/gnome/desktop/wm/preferences" = {
       "button-layout" = ":minimize,maximize,close";
 
